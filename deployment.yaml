@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: taxi-booking
-  namespace: taxi
+  namespace: taxi02
 spec:
   replicas: 2
   selector:
@@ -14,7 +14,7 @@ spec:
         app:  taxi-booking
     spec:
       imagePullSecrets:
-      - name: jfrogcred
+      - name: jfrog-credlogin
       containers:
       - name:  taxi-booking
         image: taxi02.jfrog.io/taxi02-docker-local/taxiapp:1.0.1
