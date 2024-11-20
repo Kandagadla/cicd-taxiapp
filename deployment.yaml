@@ -1,33 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: valaxy-rtp
-  namespace: valaxy
+  name: taxi-booking
+  namespace: taxi
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app:  valaxy-rtp
+      app:  taxi-booking
   template:
     metadata:
       labels:
-        app:  valaxy-rtp
+        app:  taxi-booking
     spec:
       imagePullSecrets:
-      - name: cred
+      - name: jfrogcred
       containers:
-      - name:  valaxy-rtp
-        image: stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.3
+      - name:  taxi-booking
+        image: taxi02.jfrog.io/taxi02-docker-local/taxiapp:1.0.1
         imagePullPolicy: Always
         ports:
-        - containerPort: 8000
-        env:
-        - name: CONSUMER_KEY
-          value: "HpwdfLFZLON0mT8BLWSSYfTxs"
-        - name: CONSUMER_SECRET
-          value: "0FKwKj0GuPMz50dYTYQ3EQxqHfSyNsxipyfPGgXemMHkfWuR3G"
-        - name: ACCESS_TOKEN
-          value: "19703354-imHt92QNIdQLkRiV5qQXQw5CLoJmZM5stZkJ05796"
-        - name: ACCESS_TOKEN_SECRET
-          value: "G1yk87c6rXTd6B4kcKzJlfdsQyKlp0n8YYamya6D2M1eY"
-
+        - containerPort: 8080
